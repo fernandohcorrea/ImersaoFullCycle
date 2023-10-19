@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package github.com.codeedu.codepix;
+
+option go_package = "./protofiles;pb";
+
+message ProductRegistration {
+  string name = 1;
+  string description = 2;
+  double price = 3;
+}
+
+message ProductRegistrationResult {
+  string id = 1;
+  string status = 2;
+  string error = 3;
+}
+
+message ProductFindById {
+  string id = 1;
+}
+
+message ProductFindByIdResult {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+}
+
+service ProductService {
+  rpc Register (ProductRegistration) returns (ProductRegistrationResult) {}
+  rpc FindById (ProductFindById) returns (ProductFindByIdResult) {}
+}
